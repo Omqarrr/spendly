@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Terms and Conditions{% endblock %}
+
+{% block content %}
+<style>
+    .terms-container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 4rem 2rem;
+    }
+    .terms-title {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: var(--ink);
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .terms-date {
+        text-align: center;
+        color: var(--ink-muted);
+        font-size: 1rem;
+        margin-bottom: 3rem;
+    }
+    .terms-section {
+        background: var(--paper-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    .terms-section h2 {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        color: var(--accent);
+        margin-bottom: 1rem;
+    }
+    .terms-section p {
+        font-size: 1rem;
+        color: var(--ink);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+    .terms-list {
+        margin-left: 1.5rem;
+    }
+    .terms-list li {
+        margin-bottom: 0.75rem;
+        line-height: 1.7;
+    }
+    .terms-footer {
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--ink-faint);
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-soft);
+    }
+    .terms-footer .brand-icon {
+        color: var(--accent-2);
+        font-size: 1.5rem;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+</style>
+
+<div class="terms-container">
+    <h1 class="terms-title">Terms and Conditions</h1>
+    <p class="terms-date">Effective Date: June 2026</p>
+
+    <section class="terms-section">
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing or using the Spendly application (the "Service"), you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree with any part of these Terms, you must discontinue use of the Service immediately.</p>
+    </section>
+
+    <section class="terms-section">
+        <h2>2. Use of Service</h2>
+        <p>The Service provides personal finance tracking and expense management features for individual users. You may not:</p>
+        <ul class="terms-list">
+            <li>Use the Service for any illegal, fraudulent, or unauthorized purpose;</li>
+            <li>Attempt to interfere with the security or functionality of the Service;</li>
+            <li>Copy, modify, or create derivative works of the Service without explicit permission.</li>
+        </ul>
+    </section>
+
+    <section class="terms-section">
+        <h2>3. User Data</h2>
+        <p>All user data entered into the Service is stored confidentially and will not be sold or rented to third parties. By using the Service, you grant Spendly a non-exclusive, worldwide license to use, store, and process your data solely for the purpose of providing the Service.</p>
+    </section>
+
+    <section class="terms-section">
+        <h2>4. Limitations of Liability</h2>
+        <p>Spendly shall not be liable for any indirect, incidental, special, or consequential damages arising out of or related to your use of the Service. Our total liability for any claim shall be limited to the amount you paid, if any, for using the Service.</p>
+    </section>
+
+    <section class="terms-section">
+        <h2>5. Changes to Terms</h2>
+        <p>Spendly reserves the right to modify these Terms at any time. Revised Terms will be posted on this page with an updated effective date. Continued use of the Service after such modifications constitutes acceptance of the revised Terms.</p>
+    </section>
+
+    <section class="terms-section">
+        <h2>6. Termination</h2>
+        <p>Spendly may suspend or terminate your access to the Service at its sole discretion, without notice, for any breach of these Terms or for any other reason.</p>
+    </section>
+
+    <div class="terms-footer">
+        <span class="brand-icon">◈</span>
+        <p>&copy; <span id="year"></span> Spendly. All rights reserved.</p>
+    </div>
+</div>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+{% endblock %}
