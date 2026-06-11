@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy{% endblock %}
+
+{% block content %}
+<style>
+    .privacy-container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 4rem 2rem;
+    }
+    .privacy-title {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: var(--ink);
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .privacy-date {
+        text-align: center;
+        color: var(--ink-muted);
+        font-size: 1rem;
+        margin-bottom: 3rem;
+    }
+    .privacy-section {
+        background: var(--paper-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    .privacy-section h2 {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        color: var(--accent);
+        margin-bottom: 1rem;
+    }
+    .privacy-section p {
+        font-size: 1rem;
+        color: var(--ink);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+    .privacy-list {
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .privacy-list li {
+        margin-bottom: 0.5rem;
+        line-height: 1.7;
+    }
+    .privacy-footer {
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--ink-faint);
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-soft);
+    }
+    .privacy-footer .brand-icon {
+        color: var(--accent-2);
+        font-size: 1.5rem;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+</style>
+
+<div class="privacy-container">
+    <h1 class="privacy-title">Privacy Policy</h1>
+    <p class="privacy-date">Effective Date: June 2026</p>
+
+    <section class="privacy-section">
+        <h2>1. Data We Collect</h2>
+        <p>We collect information you voluntarily provide when you use Spendly, including:
+            <ul class="privacy-list">
+                <li>Personal details such as name and email address</li>
+                <li>Financial data you input for expense tracking</li>
+                <li>Usage data like navigation patterns and feature interactions</li>
+                <li>Device information (browser, operating system)</li>
+            </ul>
+        </p>
+    </section>
+
+    <section class="privacy-section">
+        <h2>2. How We Use Your Data</h2>
+        <p>The data we collect is used to:
+            <ul class="privacy-list">
+                <li>Provide and improve the Spendly service</li>
+                <li>Generate expense reports and insights for you</li>
+                <li>Communicate important updates or support information</li>
+                <li>Comply with legal obligations</li>
+            </ul>
+        </p>
+    </section>
+
+    <section class="privacy-section">
+        <h2>3. Data Storage</h2>
+        <p>Your data is stored securely on our servers with industry‑standard encryption. Access is limited to authorized personnel and is retained only as long as necessary to fulfill the purposes described.</p>
+    </section>
+
+    <section class="privacy-section">
+        <h2>4. Third‑Party Services</h2>
+        <p>We may share limited data with trusted third‑party providers to enable essential functionality, such as:</p>
+        <ul class="privacy-list">
+            <li>Payment processing</li>
+            <li>Email delivery for notifications</li>
+            <li>Hosting and cloud services</li>
+            <li>Analytics for usage insights</li>
+        </ul>
+        <p>These providers are contractually obligated to protect your information.</p>
+    </section>
+
+    <section class="privacy-section">
+        <h2>5. Contact Us</h2>
+        <p>If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:privacy@spendly.com">privacy@spendly.com</a>.</p>
+    </section>
+
+    <div class="privacy-footer">
+        <span class="brand-icon">◈</span>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Spendly. All rights reserved.</p>
+    </div>
+</div>
+{% endblock %}
