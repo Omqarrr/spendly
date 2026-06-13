@@ -78,3 +78,51 @@ are not
 using any JS framework in this project
 
 Do not modify any other part of the page.
+
+-----------------------------
+
+git commit -m ........
+
+------------------
+
+Context Window
+
+/Context
+/compact > creates summary > use proactively ., dont let autocompaction 
+
+give clear instructions
+
+.claudeignore > ignores the files mentioned in this files
+
+------------------------
+
+
+CLAUDE.md file
+- create manually or /init 
+- set all rules, project summary, architecture, what not to do.... 
+
+.claude folder
+ - file can be placed in Project's root dir or in project's .claude/CLAUDE.md
+ - CLAUDE.local.md 
+ - can also be placed under home directory ~/.claude folder
+ - can also be placed in any folder within your project 
+---------------------
+
+Vibe Coding vs Spec Driven Coding
+
+Spec Drivern Development
+  Problem statement
+  Func Requirements
+  API contract
+  Constraints
+  Edge cases and error handling
+  Acceptance criteria
+
+
+  -----------------------------
+
+Read .claude/specs/01-database-setup.md and the existing database/db.py and
+app.py , then generate an implementation plan.Save this plan to .claude/plans/01-
+database-setup.md
+
+---------------------------------
