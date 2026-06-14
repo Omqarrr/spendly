@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
-from database.db import get_db, init_db, seed_db, register_user
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+from database.db import get_db, init_db, seed_db, register_user, get_user_by_email
 from werkzeug.exceptions import BadRequest
 
 app = Flask(__name__)
+app.secret_key = 'replace-with-a-secure-random-key'
 
 
 # ------------------------------------------------------------------ #
@@ -17,6 +18,9 @@ def landing():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    # If already logged in, redirect to profile
+    if "user_id" in session:
+        return redirect(url_for("profile"))
     if request.method == "POST":
         name = request.form.get("name", "").strip()
         email = request.form.get("email", "").strip()
@@ -52,8 +56,33 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
+    # If already logged in, redirect to profile
+    if "user_id" in session:
+        return redirect(url_for("profile"))
+    if request.method == "POST":
+        email = request.form.get("email", "").strip()
+        password = request.form.get("password", "").strip()
+        error = None
+        if not email or not password:
+            error = "Invalid email or password."
+        else:
+            user = get_user_by_email(email)
+            if user is None:
+                error = "Invalid email or password."
+            else:
+                from werkzeug.security import check_password_hash
+                if not check_password_hash(user["password_hash"], password):
+                    error = "Invalid email or password."
+        if error is None:
+            session["user_id"] = user["id"]
+            session["email"] = user["email"]
+            return redirect(url_for("profile"))
+        # Flash error and fall through to render template
+        from flask import flash
+        flash(error)
+    # GET or POST with error
     return render_template("login.html")
 
 
@@ -72,12 +101,20 @@ def privacy():
 
 @app.route("/logout")
 def logout():
-    return "Logout — coming in Step 3"
+    session.clear()
+    return redirect(url_for("landing"))
 
 
 @app.route("/profile")
 def profile():
-    return "Profile page — coming in Step 4"
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+    # Fetch user name for greeting
+    user = get_user_by_email(session.get("email", ""))
+    if user is None:
+        # fallback if email not stored; just redirect to login
+        return redirect(url_for("login"))
+    return render_template("profile.html", name=user.get("name", "User"))
 
 
 @app.route("/expenses/add")

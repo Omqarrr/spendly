@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Profile — Spendly{% endblock %}
+
+{% block content %}
+<!-- Hero‑style profile page – matches the landing page theme -->
+<section class="hero">
+    <div class="hero-inner">
+        <!-- Greeting card -->
+        <div class="auth-card">
+            <h1 class="auth-title">Welcome, {{ name }}!</h1>
+            <p class="auth-subtitle">You are now logged in.</p>
+
+            <div class="auth-actions">
+                <!-- Sign‑out button – uses the same .btn-primary style as other CTA buttons -->
+                <a href="{{ url_for('logout') }}" class="btn-primary">Sign out</a>
+                <!-- Optional link back to the dashboard/landing page -->
+                <a href="{{ url_for('landing') }}" class="btn-ghost">Back to dashboard</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Optional “Features” preview – mirrors the landing page layout -->
+<section class="features">
+    <div class="features-inner">
+        <div class="feature-card">
+            <div class="feature-icon">👤</div>
+            <h3 class="feature-title">Your profile</h3>
+            <p class="feature-body">View and manage your account information.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3 class="feature-title">Track expenses</h3>
+            <p class="feature-body">Add, edit, and delete expenses from a clean dashboard.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 class="feature-title">Insights</h3>
+            <p class="feature-body">See spending patterns, budgets, and trends.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
