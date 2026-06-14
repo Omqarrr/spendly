@@ -135,3 +135,17 @@ project specific
 user specific
 - ~/user/.claude/commands/
 
+------------------------------------
+
+
+/create-spec.md 2 <feature-name>
+
+This creates <feature-name>.md file in .claude/specs/<feature-name>.md 
+
+Next:
+In plan mode ( shift+ tab(twice))
+
+ read .claude/specs/<feature.md> and create a detailed implementation plan for the same. Dont write any code.
+
+------------------------
+
