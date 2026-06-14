@@ -83,6 +83,17 @@ def seed_db():
         conn.close()
 
 
+def get_user_by_email(email):
+    """Return user row dict or None for given email"""
+    conn = get_db()
+    try:
+        cur = conn.execute('SELECT * FROM users WHERE email = ?', (email,))
+        row = cur.fetchone()
+        return dict(row) if row else None
+    finally:
+        conn.close()
+
+
 def register_user(name, email, password):
     """Register a new user. Returns the new user's ID.
 
