@@ -1,5 +1,6 @@
-from flask import Flask, render_template
-from database.db import get_db, init_db, seed_db
+from flask import Flask, render_template, request, redirect, url_for
+from database.db import get_db, init_db, seed_db, register_user
+from werkzeug.exceptions import BadRequest
 
 app = Flask(__name__)
 
@@ -8,13 +9,46 @@ app = Flask(__name__)
 # Routes                                                              #
 # ------------------------------------------------------------------ #
 
+
 @app.route("/")
 def landing():
     return render_template("landing.html")
 
 
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        name = request.form.get("name", "").strip()
+        email = request.form.get("email", "").strip()
+        password = request.form.get("password", "").strip()
+        confirm_password = request.form.get("confirm_password", "").strip()
+        error = None
+
+        # Basic validation
+        if not name:
+            error = "Name is required"
+        elif not email:
+            error = "Email is required"
+        elif not password:
+            error = "Password is required"
+        elif password != confirm_password:
+            error = "Passwords do not match"
+        # Simple email format validation
+        elif "@" not in email or "." not in email.split("@")[-1]:
+            error = "Invalid email format"
+
+        if error is None:
+            try:
+                user_id = register_user(name, email, password)
+                # Registration successful – redirect to login with success flag
+                return redirect(url_for("login", registered="1"))
+            except ValueError as e:
+                error = str(e)
+
+        # On any error, re‑render the form with the error message
+        return render_template("register.html", error=error)
+
+    # GET request – render empty registration form
     return render_template("register.html")
 
 
@@ -28,10 +62,10 @@ def terms():
     return render_template("terms.html")
 
 
-# ------------------------------------------------------------------ #
 @app.route("/privacy")
 def privacy():
     return render_template("privacy.html")
+
 
 # Placeholder routes — students will implement these                  #
 # ------------------------------------------------------------------ #

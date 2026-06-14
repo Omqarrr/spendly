@@ -126,3 +126,26 @@ app.py , then generate an implementation plan.Save this plan to .claude/plans/01
 database-setup.md
 
 ---------------------------------
+
+Two type of custom SLASH COMMANDS
+
+project specific
+- ~/user/project-name/.claude/commands/
+
+user specific
+- ~/user/.claude/commands/
+
+------------------------------------
+
+
+/create-spec.md 2 <feature-name>
+
+This creates <feature-name>.md file in .claude/specs/<feature-name>.md 
+
+Next:
+In plan mode ( shift+ tab(twice))
+
+ read .claude/specs/<feature.md> and create a detailed implementation plan for the same. Dont write any code.
+
+------------------------
+
