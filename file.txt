@@ -126,3 +126,12 @@ app.py , then generate an implementation plan.Save this plan to .claude/plans/01
 database-setup.md
 
 ---------------------------------
+
+Two type of custom SLASH COMMANDS
+
+project specific
+- ~/user/project-name/.claude/commands/
+
+user specific
+- ~/user/.claude/commands/
+
